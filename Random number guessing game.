@@ -29,3 +29,42 @@ while guess != num:
         else:
             print('You guesses too small!!! ˙◠˙')
     count += 1
+==============================================================================================================================v2=============================================================================================================================
+
+"""This v2 adds a limit on the number of guesses with the formula 'log2(Upper bound – lower bound + 1)'."""
+
+import random
+import math
+
+# Taking input from the user
+
+a = int(input('Please input lower range: '))
+b = int(input('Please input the upper range: '))
+
+# Initiating a limit
+
+limit = round(math.log(b - a + 1, 2))
+print(f'You have {limit} chances to guess the number')
+
+# Generating a random number
+
+num = random.randint(a, b)
+
+# Setting initial guess to none and count to 1
+
+guess = None
+count = 1
+
+# Running a loop to count each failed attempt and provide hint
+
+while guess != num or count < limit:
+    guess = int(input('Please enter your guess: '))
+    if guess == num:
+        print(f'Congratulation!!! You did it in {count} guesses')
+    else:
+        if guess > num:
+            print('You guessed to big!!! ˙◠˙')
+        else:
+            print('You guesses too small!!! ˙◠˙')
+        print(f'You have {limit - count} guesses left')
+    count += 1
